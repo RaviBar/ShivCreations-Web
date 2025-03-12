@@ -1,0 +1,41 @@
+/* .container {
+    padding: 0;
+    
+  } */
+  
+  .services {
+    margin-top: 2rem;
+  }
+  
+  .serviceGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    background-color: #E2A240;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(to right, #000000, #434343);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .hero h2 {
+    font-size: 2rem;
+    margin-top: 10px;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    opacity: 0.8;
+  }
+  
