@@ -4,7 +4,7 @@ import HeaderOnSlider from './components/HeaderOnSlider';
 import About from './components/About';
 import styles from "../styles/Home.module.css";
 import KeyServices from "./components/KeyServices";
-import { AdditionalServices } from "./components/AdditionalServices";
+import {AdditionalServices}  from "./components/AdditionalServices";
 import Blogs from './components/Blogs';
 import Contact from './components/Contact';
 
