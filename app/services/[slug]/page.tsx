@@ -1,13 +1,12 @@
 import ServiceDetail from '@/app/components/ServiceDetail';
 
-interface ServiceDetailProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default async function Page({ params }: ServiceDetailProps) {
-  const { slug } = params;
-
+export default async function Page({ 
+  params,
+ }: {
+  params: Promise<{ slug: string }> 
+}) {
+  const { slug } = await params;
+  console.log("Params:", params);
+  console.log("Slug:", slug);
   return <ServiceDetail slug={slug} />;
 }

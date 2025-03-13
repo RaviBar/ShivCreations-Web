@@ -13,6 +13,8 @@ interface AdditionalServiceDetailProps {
 
 const AdditionalServiceDetail: React.FC<AdditionalServiceDetailProps> = ({ slug }) => {
   console.log("Slug in AdditionalServiceDetail:", slug);
+
+  
 const services = [
     {
       slug: 'corporate-event-photography',
