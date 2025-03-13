@@ -5,10 +5,10 @@ import HeaderOnSlider from '@/app/components/HeaderOnSlider';
 import ClientSlider from '@/app/components/ClientSlider';
 
 
-interface ServiceDetailProps {
-  params: { slug: string };
-  //   searchParams?: { [key: string]: string | string[] | undefined };
-}
+// interface ServiceDetailProps {
+//   params: { slug: string };
+//   //   searchParams?: { [key: string]: string | string[] | undefined };
+// }
 const services = [
   {
     slug: 'corporate-event-photography',
@@ -278,7 +278,11 @@ const services = [
   },
 ];
 
-export default function ServiceDetail({ params }: ServiceDetailProps) {
+export default function ServiceDetail({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const service = services.find((s) => s.slug === params.slug);
 
 // const ServiceDetail = ({ params }: { params: { slug: string } })   => {
