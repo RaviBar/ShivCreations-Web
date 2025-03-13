@@ -2,7 +2,16 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-
+interface Blog {
+  id: string;
+  title: string;
+  excerpt: string;
+  image: string;
+  author: string;
+  created_at: string;
+  updated_at: string;
+  content: string;
+}
 // Function to format the blog content
 const formatContent = (content: string) => {
   return content.split("\n\n").map((paragraph, index) => {
@@ -45,7 +54,7 @@ const formatContent = (content: string) => {
 const BlogDetailsPage: React.FC = () => {
   const { id } = useParams();
   const router = useRouter();
-  const [blog, setBlog] = useState<any>(null);
+  const [blog, setBlog] = useState<Blog | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -95,6 +104,9 @@ const BlogDetailsPage: React.FC = () => {
         />
         <div className="p-6">
           <h1 className="text-3xl font-bold text-blue-800 mb-4">{blog.title}</h1>
+        </div>
+        <div className="p-6">
+          <h1 className="text-xl font-semibold text-gray-800 mb-4">{blog.excerpt}</h1>
         </div>
         <div className="prose text-lg lg:prose-xl max-w-none p-6">
           {formatContent(blog.content)}

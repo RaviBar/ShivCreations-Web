@@ -50,7 +50,7 @@ const AuthCallbackPage: React.FC = () => {
           }
 
           // Redirect based on role
-          const redirectPath = localStorage.getItem("redirectPath") || "/blogs";
+          // const redirectPath = localStorage.getItem("redirectPath") || "/blogs";
           if (profile?.role === 'admin') {
             console.log("User is an admin. Redirecting to /admin");
             window.location.href = "/admin";

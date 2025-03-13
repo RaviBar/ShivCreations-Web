@@ -1,5 +1,5 @@
 'use client'; // Add this line to make the component client-side
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll'; // Import ScrollLink
 import { supabase } from '@/lib/supabase';
 

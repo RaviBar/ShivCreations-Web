@@ -1,22 +1,19 @@
 import React from 'react';
 import ImageSlider from './components/ImageSlider';
 import HeaderOnSlider from './components/HeaderOnSlider';
-import Header from './components/Header';
 import About from './components/About';
 import styles from "../styles/Home.module.css";
 import KeyServices from "./components/KeyServices";
 import { AdditionalServices } from "./components/AdditionalServices";
 import Blogs from './components/Blogs';
 import Contact from './components/Contact';
-import config from '@/app/config';
-// import ContactPopup from './components/ContactPopup';
 
 export default async function Home() {
   return (
     <main className="p-0 bg-black overflow-x-hidden">
       <HeaderOnSlider />
       <ImageSlider />
-      <section id="about" className="bg-black py-12"> {/* Removed min-h-screen */}
+      <section id="about" className="bg-black py-12">
         <About />
       </section>
 

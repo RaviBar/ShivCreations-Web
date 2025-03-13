@@ -43,7 +43,7 @@ const EditBlogPage: React.FC = () => {
       const filePath = `blogs-images/${fileName}`;
 
       // Upload the file to Supabase Storage
-      const { data, error: uploadError } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from("blogs-images")
         .upload(filePath, file, { upsert: false });
 
@@ -66,6 +66,9 @@ const EditBlogPage: React.FC = () => {
     e.preventDefault();
     try {
       const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      if(sessionError){
+        console.log("Session error:", sessionError);
+      }
       if (!session || !session.user) {
         setError("You must be logged in to update a blog.");
         return;

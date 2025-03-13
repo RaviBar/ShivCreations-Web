@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 
     // console.log("Transporter Created");
 
-    const mailOptions = await transporter.sendMail({
+    await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.NEXT_PUBLIC_EMAIL_TO,
       subject: "Photography Services Inquiry",

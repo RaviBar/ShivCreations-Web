@@ -2,36 +2,35 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation'; 
 import ContactPopup from './ContactPopup'; 
-import { supabase } from "@/lib/supabase";
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const HeaderOnSlider = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [liveUrl, setLiveUrl] = useState("");
+  // const [liveUrl, setLiveUrl] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
   const router = useRouter(); 
   const pathname = usePathname();
   useEffect(() => {
-    const fetchLiveUrl = async () => {
-      try {
-        const { data, error } = await supabase
-          .from("live_url")
-          .select("url")
-          .eq("id", 1) 
-          .single();
+    // const fetchLiveUrl = async () => {
+    //   try {
+    //     const { data, error } = await supabase
+    //       .from("live_url")
+    //       .select("url")
+    //       .eq("id", 1) 
+    //       .single();
   
-        if (error) throw error;
-        setLiveUrl(data?.url || "");
-      } catch (error) {
-        console.error("Error fetching live URL:", error);
-      }
-    };
+    //     if (error) throw error;
+    //     setLiveUrl(data?.url || "");
+    //   } catch (error) {
+    //     console.error("Error fetching live URL:", error);
+    //   }
+    // };
     const hasPopupBeenShown = localStorage.getItem('popupShown');
     if (!hasPopupBeenShown) {
       setIsPopupOpen(true);
       localStorage.setItem('popupShown', 'true');
     }
-    fetchLiveUrl();
+    // fetchLiveUrl();
   }, []);
   
   const handleLive = () => {

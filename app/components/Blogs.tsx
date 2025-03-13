@@ -4,8 +4,19 @@ import Link from 'next/link';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { supabase } from '@/lib/supabase';
 
+interface Blog {
+  id: number;
+  title: string;
+  excerpt: string;
+  content: string;
+  image: string;
+  author: string;
+  created_at: string;
+  updated_at: string;
+}
+
 const Blogs = () => {
-  const [blogs, setBlogs] = useState<any[]>([]); // State to store fetched blogs
+  const [blogs, setBlogs] = useState<Blog[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState<string | null>(null);

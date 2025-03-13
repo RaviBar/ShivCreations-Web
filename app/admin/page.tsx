@@ -4,6 +4,17 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import ExistingBlogs from "../components/ExistingBlogs";
 
+interface Blog {
+  id: number;
+  title: string;
+  excerpt: string;
+  content: string;
+  image: string;
+  author: string;
+  created_at: string;
+  updated_at: string;
+}
+
 const AdminPage: React.FC = () => {
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
@@ -11,7 +22,7 @@ const AdminPage: React.FC = () => {
   const [image, setImage] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
-  const [blogs, setBlogs] = useState<any[]>([]);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
   const [liveUrl, setLiveUrl] = useState("");
   const router = useRouter();
 
@@ -40,10 +51,16 @@ const AdminPage: React.FC = () => {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const res = await fetch("/api/blogs");
-      const data = await res.json();
-      setBlogs(data);
-    };
+      try {
+        const res = await fetch("/api/blogs");
+        if (!res.ok) throw new Error("Failed to fetch blogs");
+        const data = await res.json();
+        setBlogs(data);
+      } catch (err) {
+        console.error("Error fetching blogs:", err);
+        setError("Failed to load blogs. Please try again.");
+      }
+   };
     fetchBlogs();
   }, []);
 
@@ -52,6 +69,9 @@ const AdminPage: React.FC = () => {
   
     try {
       const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+      if (sessionError) {
+        console.error("Session error:", sessionError); 
+    }
     if (!session || !session.user) {
       alert("You must be logged in to delete a blog.");
       return;
@@ -83,6 +103,9 @@ const AdminPage: React.FC = () => {
   
     try {
       const { data: { session }, error: authError } = await supabase.auth.getSession();
+      if (authError) {
+        console.error("Auth error:", authError);
+    }
       if (!session || !session.user ) {
         setError("Unauthorized: Only admins can create blogs");
         return;
@@ -150,7 +173,7 @@ const AdminPage: React.FC = () => {
         return;
       }
   
-      const { data, error: uploadError } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from("blogs-images")
         .upload(filePath, file, { upsert: false });
   
@@ -159,6 +182,7 @@ const AdminPage: React.FC = () => {
         setError(`Failed to upload image: ${uploadError.message}`);
         return;
       }
+      
   
       const { data: { publicUrl } } = supabase.storage.from("blogs-images").getPublicUrl(filePath);
       setImage(publicUrl);

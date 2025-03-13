@@ -1,14 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
 import HeaderOnSlider from '@/app/components/HeaderOnSlider';
 
+interface Blog {
+  id: number;
+  title: string;
+  excerpt: string; 
+  image: string;
+}
 const HomePage: React.FC = () => {
-  const [user, setUser] = useState<any>(null);
-  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [blogs, setBlogs] = useState<any[]>([]);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const router = useRouter();
@@ -62,7 +65,7 @@ const HomePage: React.FC = () => {
 
                 <div className="p-4">
                   <h3 className="text-xl font-semibold text-blue-800 mb-2">{blog.title}</h3>
-                  <p className="text-gray-700 line-clamp-3">{blog.description}</p>
+                  <p className="text-gray-700 line-clamp-3">{blog.excerpt}</p>
                 </div>
               </div>
             ))}

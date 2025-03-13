@@ -33,7 +33,7 @@ export default function About() {
             <span className="font-semibold text-white">SHIV PHOTOGRAPHY</span> has
             been a trusted name in professional photography across{" "}
             <span className="font-semibold text-white">BHOPAL</span>. Our journey
-            began with a simple yet powerful vision: to transform life's fleeting
+            began with a simple yet powerful vision: to transform life&apos;s fleeting
             moments into{" "}
             <span className="italic text-white">timeless memories</span>. Today,
             we continue this legacy while embracing the latest innovations in
@@ -118,7 +118,7 @@ export default function About() {
             <span className="font-semibold text-white">BHOPAL</span> as{" "}
             <span className="font-semibold text-white">SHIV BHAIYA</span>, our
             founder and lead photographer has spent decades perfecting the art of
-            capturing life's most precious moments. His journey in photography
+            capturing life&apos;s most precious moments. His journey in photography
             began with a deep passion for preserving memories and has evolved
             into a masterful understanding of both{" "}
             <span className="italic text-white">
@@ -128,7 +128,7 @@ export default function About() {
           </p>
 
           <p className="text-base md:text-lg text-justify leading-relaxed mt-4 md:mt-6">
-            Shiv Bhaiya's unique approach combines{" "}
+            Shiv Bhaiya&apos;s unique approach combines{" "}
             <span className="font-semibold text-white">
               TECHNICAL EXCELLENCE
             </span>{" "}
