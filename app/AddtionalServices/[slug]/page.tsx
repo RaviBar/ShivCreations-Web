@@ -1,12 +1,10 @@
-import {AdditionalServiceDetail} from '../../components/AdditionalServiceDetail';
+import AdditionalServiceDetail from '../../components/AdditionalServiceDetail';
 
-interface AdditionalServiceDetailProps {
-  params: {
-    slug: string;
-  };
-}
-export default async function Page({ params }: AdditionalServiceDetailProps) {
-  const { slug } = params;
+
+export default async function Page({ params }: { params: { slug: string } }) {
+  const { slug } = await params;
+  console.log("Params:", params);
+  console.log("Slug:", slug);
 
   return <AdditionalServiceDetail slug={slug} />;
 }

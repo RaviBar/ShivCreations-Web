@@ -11,8 +11,8 @@ interface AdditionalServiceDetailProps {
     slug: string; 
   }
 
-export const AdditionalServiceDetail: React.FC<AdditionalServiceDetailProps> = ({ slug }) => {
-
+const AdditionalServiceDetail: React.FC<AdditionalServiceDetailProps> = ({ slug }) => {
+  console.log("Slug in AdditionalServiceDetail:", slug);
 const services = [
     {
       slug: 'corporate-event-photography',
@@ -281,8 +281,8 @@ const services = [
         "Our experienced team combines technical expertise with artistic vision, ensuring every project receives the highest quality treatment with appropriate equipment and techniques."
     },
   ];
-
-const service = services.find((s) => s.slug === slug);
+  
+  const service = services.find((s) => s.slug === slug);
 
 if (!service) {
     return notFound(); 
@@ -336,4 +336,4 @@ return (
     </div>
 );
 };
-
+export default AdditionalServiceDetail;
