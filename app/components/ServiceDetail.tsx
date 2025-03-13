@@ -183,66 +183,78 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ slug }) => {
   }
 
   return (
-    <div className="bg-black text-[#E2A240] min-h-screen py-16 px-4 md:px-12">
-      <HeaderOnSlider />
-      <div className="max-w-6xl mx-auto bg-gray-900 p-16 rounded-lg shadow-lg">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <img
-            src={service.image}
-            alt={service.title}
-            className="w-full h-auto rounded-lg shadow-md"
-          />
-          <div>
-            <h2 className="text-6xl font-cursive mb-4 text-[#E2A240]">{service.title}</h2>
-            <p className="text-xl text-white font-serif tracking-wide leading-relaxed">
-              {service.description}
-            </p>
-            {/* Add Watch Live Button */}
-            {slug === 'watch-live' && (
-              <button
-                onClick={handleLive}
-                className="mt-6 bg-yellow-500 text-black px-6 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition duration-300"
-              >
-                Watch Live
-              </button>
-            )}
-          </div>
-        </div>
-
-        {slug === 'watch-live' ? (
-          <div className="mt-10">
-            <h2 className="text-3xl underline font-cursive mb-4 text-start text-[#E2A240]">
-              Key Live Streaming Services
-            </h2>
-            <ul className="list-disc list-inside font-serif mb-16 text-xl space-y-3 text-white">
-              {service.keyServices?.map((service, index) => (
-                <li key={index}>{service}</li>
-              ))}
-            </ul>
-          </div>
-        ) : (
-          <div className="mt-8">
-            <h2 className="text-3xl font-cursive mb-4 text-start text-[#E2A240]">Details</h2>
-            <ul className="list-disc list-inside font-serif text-xl space-y-3 text-white">
-              {service.details?.map((detail, index) => (
-                <li key={index}>{detail}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <p className="text-2xl text-white font-serif tracking-wide leading-relaxed">
-          {service.equip}
+    <div className="bg-black text-[#E2A240] min-h-screen py-8 md:py-16 px-4 md:px-12">
+  <HeaderOnSlider />
+  <div className="max-w-6xl mx-auto bg-gray-900 p-4 md:p-8 lg:p-16 rounded-lg shadow-lg">
+    {/* Image and Title Section */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <img
+        src={service.image}
+        alt={service.title}
+        className="w-full h-auto rounded-lg shadow-md"
+      />
+      <div>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-cursive mb-4 text-[#E2A240]">
+          {service.title}
+        </h2>
+        <p className="text-base md:text-lg lg:text-xl text-white font-serif tracking-wide leading-relaxed">
+          {service.description}
         </p>
+        {/* Add Watch Live Button */}
+        {slug === 'watch-live' && (
+          <button
+            onClick={handleLive}
+            className="mt-4 md:mt-6 bg-yellow-500 text-black px-4 md:px-6 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition duration-300"
+          >
+            Watch Live
+          </button>
+        )}
       </div>
-
-      <div className="max-w-6xl mx-auto mt-8">
-        <ClientSlider images={service.carouselImages} title={service.title} />
-      </div>
-
-      <section id="contact" className="min-h-screen p-8">
-        <Contact />
-      </section>
     </div>
+
+    {/* Key Services or Details Section */}
+    {slug === 'watch-live' ? (
+      <div className="mt-6 md:mt-10">
+        <h2 className="text-2xl md:text-3xl underline font-cursive mb-4 text-start text-[#E2A240]">
+          Key Live Streaming Services
+        </h2>
+        <ul className="list-disc list-inside font-serif mb-8 md:mb-16 text-base md:text-lg lg:text-xl space-y-2 md:space-y-3 text-white">
+          {service.keyServices?.map((service, index) => (
+            <li key={index}>{service}</li>
+          ))}
+        </ul>
+      </div>
+    ) : (
+      <div className="mt-6 md:mt-8">
+        <h2 className="text-2xl md:text-3xl font-cursive mb-4 text-start text-[#E2A240]">
+          Details
+        </h2>
+        <ul className="list-disc list-inside font-serif text-base md:text-lg lg:text-xl space-y-2 md:space-y-3 text-white">
+          {service.details?.map((detail, index) => (
+            <li key={index}>{detail}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    {/* Equipment Description */}
+    {service.equip && (
+      <p className="text-base md:text-lg lg:text-xl text-white font-serif tracking-wide leading-relaxed mt-6 md:mt-8">
+        {service.equip}
+      </p>
+    )}
+  </div>
+
+  {/* Carousel Section */}
+  <div className="max-w-6xl mx-auto mt-8">
+    <ClientSlider images={service.carouselImages} title={service.title} />
+  </div>
+
+  {/* Contact Section */}
+  <section id="contact" className="min-h-screen p-4 md:p-8">
+    <Contact />
+  </section>
+</div>
   );
 };
 

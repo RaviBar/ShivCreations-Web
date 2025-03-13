@@ -14,7 +14,7 @@ interface AdditionalServiceDetailProps {
 const AdditionalServiceDetail: React.FC<AdditionalServiceDetailProps> = ({ slug }) => {
   console.log("Slug in AdditionalServiceDetail:", slug);
 
-  
+
 const services = [
     {
       slug: 'corporate-event-photography',
@@ -291,9 +291,9 @@ if (!service) {
 }
 
 return (
-    <div className="bg-black text-[#E2A240] min-h-screen py-16 px-4 md:px-12">
+    <div className="bg-black text-[#E2A240] min-h-screen py-8 px-4 md:px-12">
     <HeaderOnSlider />
-    <div className="max-w-6xl mx-auto bg-gray-900 p-16 rounded-lg shadow-lg">
+    <div className="max-w-6xl mx-auto bg-gray-900 p-4 md:p-8 lg:p-16 rounded-lg shadow-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <img
             src={service.image}
@@ -301,8 +301,8 @@ return (
             className="w-full h-auto rounded-lg shadow-md"
         />
         <div>
-            <h2 className="text-6xl font-cursive mb-4 text-[#E2A240]">{service.title}</h2>
-            <p className="text-xl text-white font-serif tracking-wide leading-relaxed">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-cursive mb-4 text-[#E2A240]">{service.title}</h2>
+            <p className="text-base md:text-lg lg:text-xl text-white font-serif tracking-wide leading-relaxed">
             {service.description}
             </p>
         </div>
@@ -310,9 +310,9 @@ return (
 
       
         <div className="mt-8">
-            <h2 className="text-3xl font-cursive mb-4 text-center">Details</h2>
-            <div className="flex justify-center mb-12"> 
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-16 list-none font-serif text-lg max-w-7xl">
+            <h2 className="text-2xl md:text-3xl font-cursive mb-4 text-cente">Details</h2>
+            <div className="flex justify-center mb-8 md:mb-12"> 
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 md:gap-x-16 gap-y-4 list-none font-serif text-base md:text-lg max-w-7xl">
             {service.details?.map((detail, index) => (
                 <li key={index} className="text-white flex items-center text-center p-2">
                 <span className="text-[#E2A240] mr-2">•</span> 
@@ -321,7 +321,7 @@ return (
             ))}
             </ul>
             </div>
-        <p className="text-2xl text-white font-serif tracking-wide leading-relaxed">
+        <p className="text-base md:text-lg lg:text-xl text-white font-serif tracking-wide leading-relaxed">
         {service.equip}
         </p>
     </div>
@@ -331,7 +331,7 @@ return (
         <ClientSlider images={service.carouselImages || []} title={service.title} />
     </div>
 
-    <section id="contact" className="min-h-screen p-8">
+    <section id="contact" className="min-h-screen p-4 md:p-8">
         <Contact />
     </section>
 
