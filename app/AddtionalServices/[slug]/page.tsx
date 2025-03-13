@@ -4,13 +4,15 @@ import { notFound } from 'next/navigation';
 import HeaderOnSlider from '@/app/components/HeaderOnSlider';
 import ClientSlider from '@/app/components/ClientSlider';
 
-interface ServiceDetailProps {
-  params: {
-    slug: string;
-  };
-}
 
-const ServiceDetail: React.FC<ServiceDetailProps> = async ({ params }) => {
+// interface ServiceDetailProps {
+//   params: {
+//     slug: string;
+//   };
+//   searchParams?: { [key: string]: string | string[] | undefined };
+// }
+
+const ServiceDetail = ({ params }: { params: { slug: string } })   => {
   const { slug } = params;
 
   const services = [
@@ -318,9 +320,11 @@ const ServiceDetail: React.FC<ServiceDetailProps> = async ({ params }) => {
       ))}
     </ul>
   </div>
-        <p className="text-2xl text-white font-serif tracking-wide leading-relaxed">
+           {service.equip && (
+            <p className="text-2xl text-white font-serif tracking-wide leading-relaxed">
               {service.equip}
             </p>
+          )}
 </div>
       </div>
       <div className="max-w-6xl mx-auto mt-8">
