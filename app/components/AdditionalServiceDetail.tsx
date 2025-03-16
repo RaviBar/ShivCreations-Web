@@ -6,13 +6,14 @@ import Contact from '@/app/components/Contact';
 import { notFound } from 'next/navigation';
 import HeaderOnSlider from '@/app/components/HeaderOnSlider';
 import ClientSlider from '@/app/components/ClientSlider';
+import Image from 'next/image';
 
 interface AdditionalServiceDetailProps {
     slug: string; 
   }
 
 const AdditionalServiceDetail: React.FC<AdditionalServiceDetailProps> = ({ slug }) => {
-  console.log("Slug in AdditionalServiceDetail:", slug);
+  // console.log("Slug in AdditionalServiceDetail:", slug);
 
 
 const services = [
@@ -43,7 +44,7 @@ const services = [
     {
       slug: 'family-portrait-sessions',
       title: 'Family Portrait Sessions',
-      image: '/images/Family Portrait Sessions.jpg',
+      image: '/images/Family Portrait Sessions.webp',
       description:
         "Building on Shiv bhaiya's renowned ability to capture genuine emotions, our family portrait sessions go beyond standard poses to tell your family's unique story.",
       details: [
@@ -68,7 +69,7 @@ const services = [
     {
       slug: 'maternity-photography',
       title: 'Maternity Photography',
-      image: '/images/Maternity Photography.jpg',
+      image: '/images/Maternity Photography.webp',
       description:
         "Our maternity photography service celebrates the beauty and grace of motherhood. Under Shiv bhaiya's artistic direction, we create stunning portraits that capture this precious time in your life.",
       details: [
@@ -93,7 +94,7 @@ const services = [
     {
       slug: 'newborn-photography',
       title: 'Newborn Photography',
-      image: '/images/Newborn Photography.jpg',
+      image: '/images/Newborn Photography.webp',
       description:
         "Our newborn photography service combines Shiv bhaiya's gentle approach with specialized expertise in handling and photographing newborns.",
       details: [
@@ -143,7 +144,7 @@ const services = [
     {
       slug: 'product-photography',
       title: 'Product Photography',
-      image: '/images/Product Photography.jpeg.jpg',
+      image: '/images/Product Photography.webp',
       description:
         "Our product photography service showcases your products in their best light using professional-grade techniques to enhance your brand's visual appeal.",
       details: [
@@ -168,7 +169,7 @@ const services = [
     {
       slug: 'real-estate-photography',
       title: 'Real Estate Photography',
-      image: '/images/Real Estate Photography.jpg',
+      image: '/images/Real Estate Photography.webp',
       description:
         "Our product photography service showcases your products in their best light using professional-grade techniques to enhance your brand's visual appeal.",
       details: [
@@ -193,7 +194,7 @@ const services = [
     {
       slug: 'school-event-photography',
       title: 'School Event Photography',
-      image: '/images/School Event Photography.jpeg.jpg',
+      image: '/images/School Event Photography.webp',
       description:
         "Our product photography service showcases your products in their best light using professional-grade techniques to enhance your brand's visual appeal.",
       details: [
@@ -218,7 +219,7 @@ const services = [
     {
       slug: 'food-photography',
       title: 'Food Photography',
-      image: '/images/Food Photography.jpeg.jpg',
+      image: '/images/Food Photography.webp',
       description:
         "Our product photography service showcases your products in their best light using professional-grade techniques to enhance your brand's visual appeal.",
       details: [
@@ -243,7 +244,7 @@ const services = [
     {
       slug: 'social-media-content-photography',
       title: 'Social Media Content Photography',
-      image: '/images/Social Media Content Photography.jpg',
+      image: '/images/Social Media Content Photography.webp',
       description:
         "Our product photography service showcases your products in their best light using professional-grade techniques to enhance your brand's visual appeal.",
       details: [
@@ -295,11 +296,14 @@ return (
     <HeaderOnSlider />
     <div className="max-w-6xl mx-auto bg-gray-900 p-4 md:p-8 lg:p-16 rounded-lg shadow-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <img
+            <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px]">
+          <Image
             src={service.image}
             alt={service.title}
-            className="w-full h-auto rounded-lg shadow-md"
-        />
+            fill
+            className="object-cover rounded-lg shadow-md"
+          />
+        </div>
         <div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-cursive mb-4 text-[#E2A240]">{service.title}</h2>
             <p className="text-base md:text-lg lg:text-xl text-white font-serif tracking-wide leading-relaxed">

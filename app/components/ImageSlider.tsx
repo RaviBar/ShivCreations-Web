@@ -1,21 +1,22 @@
 'use client';
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useMemo, useRef, useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import Image from 'next/image';
 
 const ImageSlider = () => {
   const sliderRef = useRef<Slider>(null);
   const [sliderHeight, setSliderHeight] = useState('100vh'); 
 
-  const images = [
-    '/images/imageSlider/slide1.png',
-    '/images/imageSlider/slide2.png',
-    '/images/imageSlider/slide3.png',
-    '/images/imageSlider/slide4.png',
-    '/images/imageSlider/slide5.png',
-  ];
+  const images = useMemo(() => [
+    '/images/imageSlider/slide1.webp',
+    '/images/imageSlider/slide2.webp',
+    '/images/imageSlider/slide3.webp',
+    '/images/imageSlider/slide4.webp',
+    '/images/imageSlider/slide5.webp',
+  ], [])
 
   const settings = {
     dots: true,
@@ -46,7 +47,7 @@ const ImageSlider = () => {
   useEffect(() => {
     const calculateSliderHeight = () => {
       if (typeof window !== "undefined" && window.innerWidth < 768) {
-        const img = new Image();
+        const img = document.createElement("img");
         img.src = images[0];
 
         img.onload = () => {
@@ -74,18 +75,18 @@ const ImageSlider = () => {
         style={{ height: sliderHeight }} // Set dynamic height
       >
         <Slider ref={sliderRef} {...settings}>
-          {images.map((image, index) => (
-            <div key={index} className="w-full h-full">
-              <img
-                src={image}
+          {images.map((img, index) => (
+            <div key={index} className="w-full h-full relative">
+              <Image
+                src={img}
                 alt={`Slide ${index + 1}`}
+                width={1920} 
+                height={1080}
                 className="w-full h-full object-cover md:object-contain"
               />
             </div>
           ))}
         </Slider>
-
-        {/* Custom Arrows */}
         <button
           onClick={goToPrev}
           className="absolute top-1/2 left-2 md:left-4 transform -translate-y-1/2 text-white text-xl md:text-2xl z-10 hover:text-gray-300 transition-colors"

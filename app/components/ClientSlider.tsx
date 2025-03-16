@@ -3,6 +3,7 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Image from 'next/image';
 
 const settings = {
   dots: true,
@@ -44,10 +45,11 @@ export default function ClientSlider({ images, title }: { images: string[] ; tit
       <Slider {...settings}>
         {images.map((img, index) => (
           <div key={index} className="px-2"> 
-            <div className="w-full h-48 md:h-64 lg:h-80 overflow-hidden rounded-lg">
-              <img
+            <div className="w-full h-48 md:h-64 lg:h-80 overflow-hidden rounded-lg relative">
+              <Image
                 src={img}
                 alt={`${title} Slide ${index + 1}`}
+                fill
                 className="w-full h-full object-cover" 
               />
             </div>

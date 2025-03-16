@@ -73,9 +73,9 @@ export async function POST(req: Request) {
 // Delete an existing blog
 export async function DELETE(req: Request) {
   try {
-    const { id, authorEmail } = await req.json();
+    const { id, authorEmail, image } = await req.json();
 
-    if (!id || !authorEmail) {
+    if (!id || !authorEmail || !image) {
       return NextResponse.json({ error: "ID and authorEmail are required" }, { status: 400 });
     }
 
@@ -95,7 +95,21 @@ export async function DELETE(req: Request) {
     if (profile.role !== "admin") {
       return NextResponse.json({ error: "Unauthorized: Only admins can delete blogs" }, { status: 403 });
     }
+    // Extract the file name from the image URL
+    const fileName = image.split("/").pop(); // Get the file name from the URL
 
+    // Delete the image from the Supabase Storage bucket
+    const { error: deleteImageError } = await supabase.storage
+      .from("blogs-images")
+      .remove([fileName]);
+
+    if (deleteImageError) {
+      console.error("Error deleting image:", deleteImageError.message);
+      return NextResponse.json(
+        { error: "Failed to delete associated image" },
+        { status: 500 }
+      );
+    }
     const { error } = await supabase.from("blogs").delete().eq("id", id);
 
     if (error) {

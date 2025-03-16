@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import ExistingBlogs from "../components/ExistingBlogs";
+import Image from "next/image";
 
 interface Blog {
   id: number;
@@ -286,7 +287,7 @@ const AdminPage: React.FC = () => {
               className="w-full p-2 border rounded"
             />
             {image && (
-              <img
+              <Image
                 src={image}
                 alt="Preview"
                 className="mt-2 w-32 h-32 object-cover rounded"

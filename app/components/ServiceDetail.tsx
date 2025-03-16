@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import HeaderOnSlider from '@/app/components/HeaderOnSlider';
 import ClientSlider from '@/app/components/ClientSlider';
 import { supabase } from "@/lib/supabase";
+import Image from 'next/image';
 
 interface ServiceDetailProps {
   slug: string; 
@@ -46,7 +47,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ slug }) => {
     {
       slug: 'pre-wedding-photography',
       title: 'Pre-Wedding Photography',
-      image: '/images/Pre-Wedding Photography.png',
+      image: '/images/Pre-Wedding Photography.webp',
       description:
         'At Shiv Photography, we understand that your pre-wedding shoot sets the tone for your entire wedding journey. Our expert team specializes in creating magical pre-wedding moments that tell your unique love story.',
       details: [
@@ -67,7 +68,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ slug }) => {
     {
       slug: 'wedding-photography',
       title: 'Wedding Photography',
-      image: '/images/Wedding Photography.jpg',
+      image: '/images/Wedding Photography.webp',
       description:
         'Your wedding day deserves nothing less than extraordinary documentation. Our experienced team combines traditional expertise with contemporary techniques to capture every meaningful moment of your special day.',
       details: [
@@ -88,7 +89,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ slug }) => {
     {
       slug: 'post-wedding-photography',
       title: 'Post-Wedding Photography',
-      image: '/images/Post-Wedding Photography.jpg',
+      image: '/images/Post-Wedding Photography.webp',
       description:
         "Extend the magic of your wedding celebrations with our post-wedding photography services. Whether it's an intimate couple's session or a grand reception, we create stunning visual narratives that complement your wedding album.",
       details: [
@@ -109,7 +110,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ slug }) => {
     {
       slug: 'baptism-photography',
       title: 'Baptism Photography',
-      image: '/images/Baptism Photography.jpg',
+      image: '/images/Baptism Photography.webp',
       description:
         'We approach baptism photography with the reverence and sensitivity this sacred occasion deserves. Our experienced photographers understand the religious significance and cultural traditions involved.',
       details: [
@@ -118,19 +119,19 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ slug }) => {
         'Customized packages',
       ],
       carouselImages: [
-        '/images/Baptism/Baptism-01.jpg',
-        '/images/Baptism/Baptism-02.jpg',
-        '/images/Baptism/Baptism-03.jpg',
-        '/images/Baptism/Baptism-04.jpg',
-        '/images/Baptism/Baptism-05.jpg',
-        '/images/Baptism/Baptism-06.jpg',
-        '/images/Baptism/Baptism-07.jpg',
+        '/images/Baptism/Baptism-01.webp',
+        '/images/Baptism/Baptism-02.webp',
+        '/images/Baptism/Baptism-03.webp',
+        '/images/Baptism/Baptism-04.webp',
+        '/images/Baptism/Baptism-05.webp',
+        '/images/Baptism/Baptism-06.webp',
+        '/images/Baptism/Baptism-07.webp',
       ],
     },
     {
       slug: 'funeral-service-coverage',
       title: 'Funeral Service Coverage',
-      image: '/images/Funeral Service Photography.jpeg.jpg',
+      image: '/images/Funeral Service Photography.webp',
       description:
         'With utmost respect and discretion, we provide memorial photography services that help families preserve memories of their loved ones. Our experienced team understands the sensitive nature of these occasions.',
       details: [
@@ -151,7 +152,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ slug }) => {
     {
       slug: 'watch-live',
       title: 'Watch live',
-      image: '/images/LIVE _20250307_125532_0000.png',
+      image: '/images/LIVE _20250307_125532_0000.webp',
       description:
         'At Shiv Photography, we bring your special moments to the global stage through our professional live streaming services. Under the expert guidance of Shiv bhaiya, we utilize cutting-edge technology to broadcast your cherished events in real-time, allowing loved ones from across the world to participate virtually in your significant occasions. Our dedicated team ensures high-quality, uninterrupted streaming with professional-grade equipment and reliable connectivity solutions, delivering a seamless viewing experience that captures the emotion and atmosphere of your event.',
       carouselImages: [
@@ -188,11 +189,14 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ slug }) => {
   <div className="max-w-6xl mx-auto bg-gray-900 p-4 md:p-8 lg:p-16 rounded-lg shadow-lg">
     {/* Image and Title Section */}
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-      <img
-        src={service.image}
-        alt={service.title}
-        className="w-full h-auto rounded-lg shadow-md"
-      />
+      <div className="relative w-full h-64 md:h-80 lg:h-96">
+        <Image
+          src={service.image}
+          alt={service.title}
+          fill
+          className="rounded-lg shadow-md object-cover"
+        />
+      </div>
       <div>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-cursive mb-4 text-[#E2A240]">
           {service.title}
@@ -211,6 +215,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({ slug }) => {
         )}
       </div>
     </div>
+
 
     {/* Key Services or Details Section */}
     {slug === 'watch-live' ? (

@@ -13,15 +13,15 @@ export const AdditionalServices = () => {
     },
     {
       title: 'Family Portrait Sessions',
-      imageUrl: '/images/Family Portrait Sessions.jpg',
+      imageUrl: '/images/Family Portrait Sessions.webp',
     },
     {
       title: 'Maternity Photography',
-      imageUrl: '/images/Maternity Photography.jpg', 
+      imageUrl: '/images/Maternity Photography.webp', 
     },
     {
       title: 'Newborn Photography',
-      imageUrl: '/images/Newborn Photography.jpg', 
+      imageUrl: '/images/Newborn Photography.webp', 
     },
     {
       title: 'Fashion Portfolio Photography',
@@ -29,23 +29,23 @@ export const AdditionalServices = () => {
     },
     {
       title: 'Product Photography',
-      imageUrl: '/images/Product Photography.jpeg.jpg', 
+      imageUrl: '/images/Product Photography.webp', 
     },
     {
       title: 'Real Estate Photography',
-      imageUrl: '/images/Real Estate Photography.jpg', 
+      imageUrl: '/images/Real Estate Photography.webp', 
     },
     {
       title: 'School Event Photography',
-      imageUrl: '/images/School Event Photography.jpeg.jpg', 
+      imageUrl: '/images/School Event Photography.webp', 
     },
     {
       title: 'Food Photography',
-      imageUrl: '/images/Food Photography.jpeg.jpg', 
+      imageUrl: '/images/Food Photography.webp', 
     },
     {
       title: 'Social Media Content Photography',
-      imageUrl: '/images/Social Media Content Photography.jpg',
+      imageUrl: '/images/Social Media Content Photography.webp',
     },
     {
       title: 'Professional Equipment Highlight',
@@ -67,7 +67,7 @@ export const AdditionalServices = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {services.map((service, index) => {
             const slug = titleToSlug(service.title);
-            console.log(slug)
+            // console.log(slug)
             return (
               <motion.div
                 key={index}

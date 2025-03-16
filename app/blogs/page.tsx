@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import HeaderOnSlider from '@/app/components/HeaderOnSlider';
+import Image from "next/image";
 
 interface Blog {
   id: number;
@@ -57,9 +58,11 @@ const HomePage: React.FC = () => {
                 className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
                 onClick={() => router.push(`/blogs/${blog.id}`)} 
               >
-                <img
+                <Image
                   src={blog.image}
                   alt={blog.title}
+                  width={400} 
+                  height={400}
                   className="w-full h-48 object-cover rounded-t-lg"
                 />
 

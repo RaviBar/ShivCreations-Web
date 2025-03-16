@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation'; 
 import ContactPopup from './ContactPopup'; 
 import { FaBars, FaTimes } from 'react-icons/fa';
+import Image from 'next/image';
 
 const HeaderOnSlider = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -90,11 +91,13 @@ const HeaderOnSlider = () => {
         {/* Logo */}
         <div
           onClick={handleLogoClick} 
-          className="w-36 h-12 overflow-hidden cursor-pointer"
+          className="relative w-36 h-12 overflow-hidden cursor-pointer"
         >
-          <img
-            src="/images/Screenshot_2025-03-06_234331-removebg-preview.png"
+          <Image
+            src="/images/logo_header.webp"
             alt="Logo"
+            fill
+            priority
             className="w-full h-full object-contain object-center"
           />
         </div>

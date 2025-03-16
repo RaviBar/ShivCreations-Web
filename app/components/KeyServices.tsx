@@ -10,37 +10,37 @@ const KeyServices = () => {
       title: 'Pre-Wedding Photography',
       description:
         'At Shiv Photography, we understand that your pre-wedding shoot sets the tone for your entire wedding journey. Our expert team specializes in creating magical pre-wedding moments that tell your unique love story.',
-      imageUrl: '/images/Pre-Wedding Photography.png',
+      imageUrl: '/images/Pre-Wedding Photography.webp',
     },
     {
       title: 'Wedding Photography',
       description:
         'Your wedding day deserves nothing less than extraordinary documentation. Our experienced team combines traditional expertise with contemporary techniques to capture every meaningful moment of your special day.',
-      imageUrl: '/images/Wedding Photography.jpg',
+      imageUrl: '/images/Wedding Photography.webp',
     },
     {
       title: 'Post-Wedding Photography',
       description:
         'Extend the magic of your wedding celebrations with our post-wedding photography services. Whether it\'s an intimate couple\'s session or a grand reception, we create stunning visual narratives that complement your wedding album.',
-      imageUrl: '/images/Post-Wedding Photography.jpg',
+      imageUrl: '/images/Post-Wedding Photography.webp',
     },
     {
       title: 'Baptism Photography',
       description:
         'We approach baptism photography with the reverence and sensitivity this sacred occasion deserves. Our experienced photographers understand the religious significance and cultural traditions involved.',
-      imageUrl: '/images/Baptism Photography.jpg',
+      imageUrl: '/images/Baptism Photography.webp',
     },
     {
       title: 'Funeral Service Coverage',
       description:
         'With utmost respect and discretion, we provide memorial photography services that help families preserve memories of their loved ones. Our experienced team understands the sensitive nature of these occasions.',
-      imageUrl: '/images/Funeral Service Photography.jpeg.jpg',
+      imageUrl: '/images/Funeral Service Photography.webp',
     },
     {
       title: 'Watch Live',
       description:
         'Witness live photography events! Stream workshops, exhibitions, and shoots in real-time on our site. Join us for real-time events, tutorials, exclusive photo sessions, and connect with fellow photographers.',
-      imageUrl: '/images/LIVE _20250307_125532_0000.png',
+      imageUrl: '/images/LIVE _20250307_125532_0000.webp',
     },
   ];
 

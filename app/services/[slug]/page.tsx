@@ -6,7 +6,7 @@ export default async function Page({
   params: Promise<{ slug: string }> 
 }) {
   const { slug } = await params;
-  console.log("Params:", params);
-  console.log("Slug:", slug);
+  // console.log("Params:", params);
+  // console.log("Slug:", slug);
   return <ServiceDetail slug={slug} />;
 }

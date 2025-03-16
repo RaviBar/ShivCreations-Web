@@ -13,29 +13,27 @@ export default async function Home() {
     <main className="p-0 bg-black overflow-x-hidden">
       <HeaderOnSlider />
       <ImageSlider />
-      <section id="about" className="bg-black py-12">
+      <section id="about" className="py-12">
         <About />
       </section>
 
-      <section id="wedding" className="bg-black p-8">
+      <section id="wedding" className="p-8">
         <div className={styles.serviceGrid}>
           <KeyServices />
         </div>
       </section>
 
-      <section id="services" className="bg-black-100 p-8">
+      <section id="services" className="p-10">
         <AdditionalServices />
       </section>
 
       <section
         id="contact"
-        className="p-8 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/Contact us page background_20250306_000033_0000.png')" }}
       >
         <Contact />
       </section>
 
-      <section id="blogs" className="bg-black-100">
+      <section id="blogs">
         <Blogs />
       </section>
     </main>

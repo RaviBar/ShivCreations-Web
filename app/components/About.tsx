@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 
 export default function About() {
   const aboutRef = React.useRef(null);
@@ -92,10 +93,13 @@ export default function About() {
           animate={aboutInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <img
-            src="/images/About us left side pic.jpg"
+          <Image
+            src="/images/About us left side pic.webp"
             alt="About Us"
+            width={400}
+            height={500} 
             className="w-full max-w-md lg:max-w-lg rounded-lg shadow-lg"
+            priority
           />
         </motion.div>
       </div>
@@ -165,9 +169,11 @@ export default function About() {
           animate={meetShivInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <img
-            src="/images/About us Right side pic.jpg" 
+          <Image
+            src="/images/About us Right side pic.webp" 
             alt="Meet Shiv Bhaiya"
+            width={400}
+            height={500} 
             className="w-full max-w-md lg:max-w-lg rounded-lg shadow-lg"
           />
         </motion.div>

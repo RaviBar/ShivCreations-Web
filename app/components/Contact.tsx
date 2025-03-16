@@ -83,7 +83,7 @@ const Contact = () => {
     <section
       id="contact"
       className="min-h-screen p-8 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/Contact-us-page.png')" }}
+      style={{ backgroundImage: "url('/images/Contact-us-page.webp')" }}
     >
       <h2 className="text-4xl font-bold text-center text-[#E2A240] mb-12">Contact Us</h2>
       <div className="max-w-2xl mx-auto bg-white bg-opacity-90 p-8 rounded-lg shadow-lg">

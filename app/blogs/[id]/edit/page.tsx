@@ -3,6 +3,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { FaArrowLeft } from "react-icons/fa";
+import Image from "next/image";
 
 const EditBlogPage: React.FC = () => {
   const { id } = useParams();
@@ -40,7 +41,7 @@ const EditBlogPage: React.FC = () => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       const fileName = `${Date.now()}_${file.name}`;
-      const filePath = `blogs-images/${fileName}`;
+      const filePath = fileName;
 
       // Upload the file to Supabase Storage
       const { error: uploadError } = await supabase.storage
@@ -57,7 +58,7 @@ const EditBlogPage: React.FC = () => {
       const { data: { publicUrl } } = supabase.storage
         .from("blogs-images")
         .getPublicUrl(filePath);
-      setImage(publicUrl);
+      setImage(publicUrl.replace("//", "/"));
     }
   };
 
@@ -159,7 +160,7 @@ const EditBlogPage: React.FC = () => {
               className="w-full p-2 border rounded"
             />
             {image && (
-              <img
+              <Image
                 src={image}
                 alt="Preview"
                 className="mt-2 w-32 h-32 object-cover rounded"

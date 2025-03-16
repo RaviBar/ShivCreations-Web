@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 
 interface ContactPopupProps {
-  onClose: () => void; // Function to close the popup
+  onClose: () => void; 
 }
 
 const ContactPopup: React.FC<ContactPopupProps> = ({ onClose }) => {
@@ -50,7 +50,7 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ onClose }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log("Form Data:", formData); // Log form data
+    console.log("Form Data:", formData); 
 
     try {
       const response = await fetch("/api/contact", {
@@ -61,7 +61,7 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ onClose }) => {
         body: JSON.stringify(formData),
       });
 
-      // console.log("API Response:", response); // Log API response
+      // console.log("API Response:", response); 
 
       if (!response.ok) {
         throw new Error("Failed to send message");
@@ -86,7 +86,6 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="relative max-w-lg w-full mx-4 bg-white p-6 rounded-lg shadow-lg">
-        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-2 right-2 text-gray-700 hover:text-gray-900"
@@ -109,7 +108,6 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ onClose }) => {
 
         <h2 className="text-2xl font-bold text-center text-[#E2A240] mb-4">Enquiry</h2>
         <form onSubmit={handleSubmit} className="space-y-3">
-          {/* Name Field */}
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">
               Name <span className="text-red-500">*</span>
@@ -125,7 +123,6 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ onClose }) => {
             />
           </div>
 
-          {/* Phone Number Field */}
           <div>
             <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
               Phone Number <span className="text-red-500">*</span>
@@ -141,7 +138,6 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ onClose }) => {
             />
           </div>
 
-          {/* Location Field */}
           <div>
             <label htmlFor="location" className="block text-sm font-medium text-gray-700">
               Location <span className="text-red-500">*</span>
@@ -156,8 +152,6 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ onClose }) => {
               required
             />
           </div>
-
-          {/* Email Field */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email
@@ -172,13 +166,11 @@ const ContactPopup: React.FC<ContactPopupProps> = ({ onClose }) => {
             />
           </div>
 
-          {/* Message Field */}
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-gray-700">
               Message <span className="text-red-500">*</span>
             </label>
             <div className="mt-1">
-              {/* Service Tags */}
               <div className="flex flex-wrap gap-2 mb-2">
                 {services.map((service) => (
                   <button

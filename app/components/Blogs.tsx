@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { supabase } from '@/lib/supabase';
+import Image from 'next/image';
 
 interface Blog {
   id: number;
@@ -132,11 +133,12 @@ const Blogs = () => {
               }`}
             >
               <div className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 w-72 md:w-96">
-                <div className="border-4 border-[#E2A240] rounded-t-lg">
-                  <img
+                <div className="relative border-4 border-[#E2A240] rounded-t-lg w-72 md:w-96 h-48">
+                  <Image
                     src={blog.image}
                     alt={blog.title}
-                    className="w-full h-48 object-cover"
+                    fill
+                    className="object-cover rounded-t-lg"
                   />
                 </div>
                 <div className="p-6 h-48 flex flex-col justify-between">

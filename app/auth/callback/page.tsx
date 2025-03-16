@@ -1,77 +1,56 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
-
-
 const AuthCallbackPage: React.FC = () => {
   const router = useRouter();
+  const [sessionChecked, setSessionChecked] = useState(false);
 
   useEffect(() => {
     const handleOAuthCallback = async () => {
+      if (sessionChecked) return;
+
       try {
         const { data: { session }, error } = await supabase.auth.getSession();
 
-        if (error) {
-          console.error("Error during OAuth callback:", error.message);
-          router.push("/blogs"); 
-          return;
+        if (error || !session?.user) {
+          console.error("Authentication error:", error?.message || "No session");
+          return router.push("/blogs");
         }
 
-        if (session?.user) {
-          const userEmail = session.user.email?.trim().toLowerCase() || "";
-          const userId = session.user.id;
+        const userId = session.user.id;
+        const userEmail = session.user.email?.trim().toLowerCase() || "";
 
-          // Check if the user already exists in the profiles table
-          const { data: profile, error: profileError } = await supabase
-            .from('profiles')
-            .select('role')
-            .eq('user_id', userId)
-            .single();
+        // Check if the user already exists (only if needed)
+        let role = "user";
+        const { data: profile, error: profileError } = await supabase
+          .from("profiles")
+          .select("role")
+          .eq("user_id", userId)
+          .single();
 
-          if (profileError && profileError.code !== 'PGRST116') { // PGRST116 means no rows found
-            console.error("Error fetching profile:", profileError.message);
-            router.push("/blogs");
-            return;
-          }
-
-          // If the user doesn't exist in the profiles table, insert them
-          if (!profile) {
-            const { error: insertError } = await supabase
-              .from('profiles')
-              .insert([{ user_id: userId, email: userEmail, role: 'user' }]);
-
-            if (insertError) {
-              console.error("Error inserting user into profiles:", insertError.message);
-              router.push("/blogs");
-              return;
-            }
-          }
-
-          // Redirect based on role
-          // const redirectPath = localStorage.getItem("redirectPath") || "/blogs";
-          if (profile?.role === 'admin') {
-            console.log("User is an admin. Redirecting to /admin");
-            window.location.href = "/admin";
-          } else {
-            console.log("User is not an admin. Redirecting to /blogs");
-            window.location.href = "/blogs";
-          }
+        if (!profile && profileError?.code === "PGRST116") {
+          const { error: insertError } = await supabase.from("profiles").insert([
+            { user_id: userId, email: userEmail, role: "user" },
+          ]);
+          if (insertError) console.error("User insertion failed:", insertError.message);
         } else {
-          console.error("No session found after OAuth callback");
-          router.push("/blogs");
+          role = profile?.role || "user";
         }
 
-        window.history.replaceState({}, document.title, window.location.pathname);
+        // Redirect based on role using Next.js router (avoids full reload)
+        router.push(role === "admin" ? "/admin" : "/blogs");
+
+        setSessionChecked(true);
       } catch (err) {
-        console.error("Unexpected error during OAuth callback:", err);
-        router.push("/blogs"); 
+        console.error("Unexpected error:", err);
+        router.push("/blogs");
       }
     };
 
     handleOAuthCallback();
-  }, [router]);
+  }, [router, sessionChecked]);
 
   return (
     <div className="min-h-screen flex items-center justify-center text-xl">

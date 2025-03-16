@@ -15,11 +15,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, imageUrl 
         <Image
           src={imageUrl}
           alt={title}
-          layout="fill"
-          objectFit="cover"
-          className="w-full h-full"
+          fill
+          className="object-cover"
         />
       </div>
+
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
         <p className="text-gray-600">{description}</p>
